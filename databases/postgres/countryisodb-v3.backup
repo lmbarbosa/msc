@@ -1,0 +1,343 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.4
+-- Dumped by pg_dump version 9.4.4
+-- Started on 2016-06-21 18:01:34
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 173 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1999 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 172 (class 1259 OID 16394)
+-- Name: countryisodb; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE countryisodb (
+    country_id integer NOT NULL,
+    country_iso_alphacode_2 character varying(2),
+    country_iso_alphacode_3 character varying(3),
+    country_name_1 character varying(70),
+    country_name_2 character varying(70),
+    country_name_3 character varying(70),
+    country_iso_numericcode integer,
+    country_name_4 character varying(70) DEFAULT ''::character varying,
+    country_continent character varying(20)
+);
+
+
+ALTER TABLE countryisodb OWNER TO postgres;
+
+--
+-- TOC entry 1991 (class 0 OID 16394)
+-- Dependencies: 172
+-- Data for Name: countryisodb; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY countryisodb (country_id, country_iso_alphacode_2, country_iso_alphacode_3, country_name_1, country_name_2, country_name_3, country_iso_numericcode, country_name_4, country_continent) FROM stdin;
+181	RE	REU	Réunion			638		Africa
+211	SR	SUR	Suriname			740		South America
+31	BR	BRA	Brazil	Brasil	Brazil	76		South America
+156	NL	NLD	Netherlands	The Netherlands	the Netherlands	528		Europe
+39	CM	CMR	Cameroon	Cameroun		120		Africa
+170	PS	PSE	Palestinian Territory, Occupied	Palestine	Ramallah	275		Asia
+110	IT	ITA	Italy	ITALY	Italia	380		Europe
+205	ZA	ZAF	South Africa	Republic of South Africa		710		Africa
+185	BL	BLM	Saint-Barthélemy			652		Europe
+7	AO	AGO	Angola			24		Africa
+102	IS	ISL	Iceland			352		Europe
+143	MX	MEX	Mexico	México		484		North America
+119	KR	KOR	Republic of Korea	South Korea	Korea	410		Asia
+115	KZ	KAZ	Kazakhstan	Republic of Kazakhstan		398		Asia
+130	LU	LUX	Luxembourg	Grand-Duchy of Luxembourg		442		Europe
+103	IN	IND	India	Índia		356		Asia
+122	LA	LAO	Lao PDR	Laos	Lao Peoples Democratic Republic	418		Asia
+109	IL	ISR	Israel	Isreal		376		Asia
+104	ID	IDN	Indonesia			360		Asia
+105	IR	IRN	Iran, Islamic Republic of	Iran		364		Asia
+106	IQ	IRQ	Iraq			368		Asia
+108	IM	IMN	Isle of Man			833		
+111	JM	JAM	Jamaica			388		North America
+113	JE	JEY	Jersey			832		
+114	JO	JOR	Jordan			400		Asia
+116	KE	KEN	Kenya			404		Africa
+117	KI	KIR	Kiribati			296		Australia
+120	KW	KWT	Kuwait			414		Asia
+121	KG	KGZ	Kyrgyzstan			417		Asia
+124	LB	LBN	Lebanon			422		Asia
+125	LS	LSO	Lesotho			426		Africa
+126	LR	LBR	Liberia			430		Africa
+127	LY	LBY	Libya			434		Africa
+128	LI	LIE	Liechtenstein			438		Europe
+129	LT	LTU	Lithuania			440		Europe
+131	MK	MKD	Macedonia, Republic of	Macedonia		807		Europe
+133	MW	MWI	Malawi			454		Africa
+136	ML	MLI	Mali			466		Africa
+137	MT	MLT	Malta			470		Europe
+138	MH	MHL	Marshall Islands			584		Australia
+139	MQ	MTQ	Martinique			474		North America
+140	MR	MRT	Mauritania			478		Africa
+141	MU	MUS	Mauritius			480		Africa
+142	YT	MYT	Mayotte			175		
+144	FM	FSM	Micronesia, Federated States of	Micronesia		583		Australia
+146	MC	MCO	Monaco			492		Europe
+147	MN	MNG	Mongolia			496		Asia
+148	ME	MNE	Montenegro			499		Europe
+149	MS	MSR	Montserrat			500		North America
+151	MZ	MOZ	Mozambique			508		Africa
+152	MM	MMR	Myanmar			104		Asia
+153	NA	NAM	Namibia			516		Africa
+154	NR	NRU	Nauru			520		Australia
+155	NP	NPL	Nepal			524		Asia
+157	AN	ANT	Netherlands Antilles			530		North America
+158	NC	NCL	New Caledonia			540		Australia
+159	NZ	NZL	New Zealand			554		Australia
+160	NI	NIC	Nicaragua			558		North America
+161	NE	NER	Niger			562		Africa
+162	NG	NGA	Nigeria			566		Africa
+163	NU	NIU	Niue			570		Australia
+164	NF	NFK	Norfolk Island			574		Europe
+165	MP	MNP	Northern Mariana Islands			580		Australia
+166	NO	NOR	Norway			578		Europe
+169	PW	PLW	Palau			585		Australia
+173	PY	PRY	Paraguay			600		South America
+176	PN	PCN	Pitcairn			612		Australia
+177	PL	POL	Poland			616		Europe
+178	PT	PRT	Portugal			620		Europe
+179	PR	PRI	Puerto Rico			630		North America
+182	RO	ROU	Romania			642		Europe
+184	RW	RWA	Rwanda			646		Africa
+186	SH	SHN	Saint Helena			654		Africa
+187	KN	KNA	Saint Kitts and Nevis			659		North America
+188	LC	LCA	Saint Lucia			662		North America
+189	MF	MAF	Saint-Martin (French part)			663		
+190	PM	SPM	Saint Pierre and Miquelon			666		
+191	VC	VCT	Saint Vincent and Grenadines			670		North America
+192	WS	WSM	Samoa			882		Australia
+193	SM	SMR	San Marino			674		Europe
+194	ST	STP	Sao Tome and Principe			678		Africa
+198	SC	SYC	Seychelles			690		Africa
+199	SL	SLE	Sierra Leone			694		Africa
+202	SI	SVN	Slovenia			705		Europe
+203	SB	SLB	Solomon Islands			90		Australia
+204	SO	SOM	Somalia			706		Africa
+206	GS	SGS	South Georgia and the South Sandwich Islands			239		
+207	SS	SSD	South Sudan			728		Africa
+208	ES	ESP	Spain			724		Europe
+209	LK	LKA	Sri Lanka			144		Asia
+210	SD	SDN	Sudan			736		Africa
+212	SJ	SJM	Svalbard and Jan Mayen Islands			744		
+213	SZ	SWZ	Swaziland			748		Africa
+214	SE	SWE	Sweden			752		Europe
+216	SY	SYR	Syrian Arab Republic (Syria)	Syria		760		Asia
+220	TH	THA	Thailand			764		Asia
+221	TL	TLS	Timor-Leste			626		Asia
+222	TG	TGO	Togo			768		Africa
+223	TK	TKL	Tokelau			772		
+18	BH	BHR	Bahrain			48		Asia
+20	BB	BRB	Barbados			52		North America
+22	BE	BEL	Belgium			56		Europe
+23	BZ	BLZ	Belize			84		North America
+19	BD	BGD	Bangladesh	Dhaka		50		Asia
+219	TZ	TZA	Tanzania , United Republic of	Tanzania	Republic of Tanzania	834		Africa
+172	PG	PNG	Papua New Guinea	New Guinea		598		Australia
+183	RU	RUS	Russian Federation	Russia	Moscow	643		Asia
+168	PK	PAK	Pakistan	Karachi Pakistan		586		Asia
+135	MV	MDV	Maldives	Republic of Maldives		462		Asia
+24	BJ	BEN	Benin			204		Africa
+25	BM	BMU	Bermuda			60		North America
+26	BT	BTN	Bhutan			64		Asia
+27	BO	BOL	Bolivia			68		South America
+28	BA	BIH	Bosnia and Herzegovina			70		Europe
+29	BW	BWA	Botswana			72		Africa
+30	BV	BVT	Bouvet Island			74		
+32	VG	VGB	British Virgin Islands			92		North America
+33	IO	IOT	British Indian Ocean Territory			86		
+34	BN	BRN	Brunei Darussalam			96		Asia
+35	BG	BGR	Bulgaria			100		Europe
+36	BF	BFA	Burkina Faso			854		Africa
+37	BI	BDI	Burundi			108		Africa
+38	KH	KHM	Cambodia			116		Asia
+42	KY	CYM	Cayman Islands			136		North America
+44	TD	TCD	Chad			148		Africa
+45	CL	CHL	Chile			152		South America
+201	SK	SVK	Slovakia	Slovak Republic		703		Europe
+180	QA	QAT	Qatar	State of Qatar		634		Asia
+150	MA	MAR	Morocco	Maroc		504		Africa
+197	RS	SRB	Serbia	Republic of Serbia		688		Europe
+218	TJ	TJK	Tajikistan	Republic of Tajikistan		762		Asia
+200	SG	SGP	Singapore	Republic of Singapore		702		Asia
+196	SN	SEN	Senegal	Sénégal		686		Africa
+215	CH	CHE	Switzerland	Geneva	Suisse	756		Europe
+217	TW	TWN	Taiwan, Republic of China	Taiwan	Taiwan Authority	158		Asia
+40	CA	CAN	Canada	Alberta	Ontario	124		North America
+167	OM	OMN	Oman	Sultanate of Oman		512		Asia
+174	PE	PER	Peru	Perú		604		South America
+233	AE	ARE	United Arab Emirates	Emirates	UAE	784		Asia
+82	GM	GMB	Gambia	The Gambia		270		Africa
+46	CN	CHN	China	P. R. China	Peoples Republic of China	156	ROC	Asia
+79	PF	PYF	French Polynesia	Polynésie Française		258		Australia
+226	TN	TUN	Tunisia	Tunise	Tunisie	788		Africa
+61	CZ	CZE	Czech Republic	The Czech Republic		203		Europe
+235	US	USA	United States of America	United States	U.? S.? A.?	840		North America
+234	GB	GBR	United Kingdom	U.?K.?	UK	826	England	Europe
+48	MO	MAC	Macao, Special Administrative Region of China	Macao	Macau	446		Asia
+84	DE	DEU	Germany	Magdeburg		276		Europe
+54	CD	COD	Congo, Democratic Republic of the	Congo	Democratic Republic of Congo	180	D. R. Congo	Africa
+49	CX	CXR	Christmas Island			162		
+50	CC	CCK	Cocos (Keeling) Islands			166		
+52	KM	COM	Comoros			174		Africa
+55	CK	COK	Cook Islands			184		Australia
+57	CI	CIV	Côte d'Ivoire			384		Africa
+58	HR	HRV	Croatia			191		Europe
+59	CU	CUB	Cuba			192		North America
+60	CY	CYP	Cyprus			196		Europe
+62	DK	DNK	Denmark			208		Europe
+63	DJ	DJI	Djibouti			262		Africa
+64	DM	DMA	Dominica			212		North America
+65	DO	DOM	Dominican Republic			214		North America
+66	EC	ECU	Ecuador			218		South America
+67	EG	EGY	Egypt			818		Africa
+68	SV	SLV	El Salvador			222		North America
+69	GQ	GNQ	Equatorial Guinea	Guinea		226		Africa
+70	ER	ERI	Eritrea			232		Africa
+71	EE	EST	Estonia			233		Europe
+72	ET	ETH	Ethiopia			231		Africa
+73	FK	FLK	Falkland Islands (Malvinas)	Malvinas		238		South America
+74	FO	FRO	Faroe Islands			234		Europe
+75	FJ	FJI	Fiji			242		Australia
+76	FI	FIN	Finland			246		Europe
+78	GF	GUF	French Guiana			254		South America
+80	TF	ATF	French Southern Territories			260		
+81	GA	GAB	Gabon			266		Africa
+83	GE	GEO	Georgia			268		Asia
+85	GH	GHA	Ghana			288		Africa
+86	GI	GIB	Gibraltar			292		Europe
+87	GR	GRC	Greece			300		Europe
+88	GL	GRL	Greenland			304		Europe
+89	GD	GRD	Grenada			308		North America
+90	GP	GLP	Guadeloupe			312		North America
+91	GU	GUM	Guam			316		Australia
+92	GT	GTM	Guatemala			320		North America
+93	GG	GGY	Guernsey			831		
+95	GW	GNB	Guinea-Bissau			624		Africa
+96	GY	GUY	Guyana			328		South America
+97	HT	HTI	Haiti			332		North America
+98	HM	HMD	Heard Island and Mcdonald Islands			334		
+99	VA	VAT	Holy See (Vatican City State)	Vatican		336		Europe
+100	HN	HND	Honduras			340		North America
+101	HU	HUN	Hungary			348		Europe
+245	YE	YEM	Yemen			887		Asia
+224	TO	TON	Tonga			776		Australia
+225	TT	TTO	Trinidad and Tobago			780		North America
+228	TM	TKM	Turkmenistan			795		Asia
+229	TC	TCA	Turks and Caicos Islands			796		
+230	TV	TUV	Tuvalu			798		Australia
+231	UG	UGA	Uganda			800		Africa
+232	UA	UKR	Ukraine			804		Europe
+236	UM	UMI	United States Minor Outlying Islands			581		
+237	UY	URY	Uruguay			858		South America
+238	UZ	UZB	Uzbekistan			860		Asia
+175	PH	PHL	Philippines	The Philippines	the Philippines	608		Asia
+47	HK	HKG	Hong Kong, Special Administrative Region of China	Hong Kong	Hong Kong S.A.R	344	Hong Kong SAR	Asia
+56	CR	CRI	Costa Rica	Costa Ruca		188		North America
+51	CO	COL	Colombia	Bogotá Colombia		170		South America
+41	CV	CPV	Cape Verde	Cabo Verde		132		Africa
+43	CF	CAF	Central African Republic	République Centrafricaine		140		Africa
+53	CG	COG	Congo (Brazzaville)	Republic of Congo	République du Congo	178		Africa
+195	SA	SAU	Saudi Arabia	Kingdom of Saudi Arabia	KSA	682		Asia
+134	MY	MYS	Malaysia	Kedah	Perlis	458	Perak Malaysia	Asia
+123	LV	LVA	Latvia			428		Europe
+239	VU	VUT	Vanuatu			548		Australia
+240	VE	VEN	Venezuela (Bolivarian Republic of)	Venezuela		862		South America
+242	VI	VIR	Virgin Islands, US			850		North America
+243	WF	WLF	Wallis and Futuna Islands			876		
+244	EH	ESH	Western Sahara			732		Africa
+246	ZM	ZMB	Zambia			894		Africa
+247	ZW	ZWE	Zimbabwe			716		Africa
+118	KP	PRK	Korea, Democratic People Republic of	North Korea		408		Asia
+227	TR	TUR	Turkey	TURKEY		792		Asia
+112	JP	JPN	Japan	JAPAN	japan	392		Asia
+3	AL	ALB	Albania	Alvania		8		Europe
+11	AR	ARG	Argentina	Argentine		32		South America
+14	AU	AUS	Australia	Austrália		36		Australia
+241	VN	VNM	Viet Nam	Vietnam	VietNam	704	Vietnam	Asia
+4	DZ	DZA	Algeria	Algérie		12		Africa
+6	AD	AND	Andorra	Andorre		20		Europe
+1	AF	AFG	Afghanistan			4		Asia
+2	AX	ALA	Aland Islands			248		
+5	AS	ASM	American Samoa			16		Australia
+8	AI	AIA	Anguilla			660		North America
+9	AQ	ATA	Antarctica			10		Antarctica
+10	AG	ATG	Antigua and Barbuda			28		North America
+12	AM	ARM	Armenia			51		Asia
+13	AW	ABW	Aruba			533		North America
+15	AT	AUT	Austria			40		Europe
+16	AZ	AZE	Azerbaijan			31		Asia
+17	BS	BHS	Bahamas			44		North America
+145	MD	MDA	Moldova	Republic of Moldova		498		Europe
+171	PA	PAN	Panama	Republic of Panama	República de Panamá	591	Panamá	North America
+132	MG	MDG	Madagascar	Madagasca		450		Africa
+21	BY	BLR	Belarus	Republic of Belarus		112		Europe
+94	GN	GIN	Guinea	Guinea-Conakry	\N	324		Africa
+248	CW	CUW	Curaçao			531		South America
+77	FR	FRA	France	Nouvelle-Calédonie	Côte dIvoire	250	Principality of Monaco	Europe
+107	IE	IRL	Ireland	Republic of Ireland	Rep. of Ireland	372		Europe
+\.
+
+
+--
+-- TOC entry 1881 (class 2606 OID 16399)
+-- Name: country_id_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY countryisodb
+    ADD CONSTRAINT country_id_pk PRIMARY KEY (country_id);
+
+
+--
+-- TOC entry 1998 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-06-21 18:01:34
+
+--
+-- PostgreSQL database dump complete
+--
+
